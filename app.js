@@ -1,9 +1,8 @@
-const util= require ('./Modules/Mymodules.js')
-const now= require ('./Modules/Mymodules.js').getCurentTime
-const plus= require ('./Modules/Mymodules.js').add
+const fs=require ('fs')
+const data=fs.readFileSync('myFile/input.txt','utf-8')
 
+console.log(data)
 
-console.log(util.getCurentTime())
-console.log(util.add(50,100))
-console.log(now())
-console.log(plus(30,50))
+const outputText=`Hello node.js\n${data}\nFile Wroted ${new Date}`
+fs.writeFileSync("myFile/output.txt",outputText)
+console.log("Write file complete")
