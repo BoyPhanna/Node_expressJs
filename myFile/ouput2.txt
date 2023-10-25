@@ -1,3 +1,0 @@
-Hello node js 2
-Hello Boy node js
-File wroted Wed Oct 25 2023 22:27:00 GMT+0700 (Indochina Time)
