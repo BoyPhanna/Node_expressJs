@@ -1,31 +1,9 @@
-let connect=true
-url1="www.phanna1.com"
-url2="www.phanna2.com"
-url3="www.phanna3.com"
-url4="www.phanna4.com"
-function download(url){
-    return new Promise(
-        function(resolve,reject){
-            console.log("Downloading......");
-            setTimeout(
-                ()=>{
-                    if(connect){
-                        resolve("Download "+url+" complete");
-                    }
-                    else{
-                        reject("Faild")
-                    }
-                }
-            ,1000)
-        }
+const util= require ('./Modules/Mymodules.js')
+const now= require ('./Modules/Mymodules.js').getCurentTime
+const plus= require ('./Modules/Mymodules.js').add
 
-    )
-}
-async function start(){
-    console.log(await download(url1))
-    console.log(await download(url2))
-    console.log(await download(url3))
 
-}
-
-start()
+console.log(util.getCurentTime())
+console.log(util.add(50,100))
+console.log(now())
+console.log(plus(30,50))
