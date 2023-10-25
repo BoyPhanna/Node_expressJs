@@ -1,8 +1,18 @@
 const fs=require ('fs')
-const data=fs.readFileSync('myFile/input.txt','utf-8')
 
-console.log(data)
+fs.readFile('myFile/input.txt','utf-8',(err,data)=>{
+    if(err)
+        console.log("Some thing have wrong!")
+    else{
+        const outputText=`Hello node js 2\n${data}\nFile wroted ${new Date()}`
+        fs.writeFile('myFile/ouput2.txt',outputText,err=>{
+            if(err){
+                console.log("Somet thing have wrong!")
+            }
+            else{
+                console.log("File Wroted");
+            }
+        })
+    }
+})
 
-const outputText=`Hello node.js\n${data}\nFile Wroted ${new Date}`
-fs.writeFileSync("myFile/output.txt",outputText)
-console.log("Write file complete")
