@@ -1,21 +1,22 @@
-const http=require ('http')
-const fs=require('fs')
-const indexPage=fs.readFileSync(`${__dirname}/webpages/index.html`)
-const productPage=fs.readFileSync(`${__dirname}/webpages/product.html`)
-const server=http.createServer((req,res)=>{
-    const parthName=req.url
-    console.log("url : "+parthName)
-    if(parthName=="/" || parthName=="/home"){
-        res.end(indexPage)
-    }
-    if( parthName=="/product"){
-        res.end(productPage)
-    }
-    else{
-        res.writeHead(404)
-        const myPage=`<h1 style="color: blue;">404 Not Fount</h1>`
-        res.end(myPage)
-    }
-}).listen(3000,()=>{
-    console.log("start server port 3000")
+const express=require('express')
+const app=express()
+const path=require('path')
+app.get("/",(req,res)=>{
+    res.status(200)
+    res.type('text/html')
+    res.sendFile(path.join(__dirname,"templates/index.html"))
+})
+
+app.get("/product1",(req,res)=>{
+    res.status(200)
+    res.type('text/html')
+    res.sendFile(path.join(__dirname,"templates/product1.html"))
+})
+
+app.get("/product",(req,res)=>{
+    res.send("Hello product express")
+})
+
+app.listen(8080,()=>{
+    console.log("Run server port : 8080")
 })
