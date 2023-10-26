@@ -9,10 +9,11 @@ router.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"../templates/index.html"))
 })
 
-router.get("/product1",(req,res)=>{
+router.get("/product/:id",(req,res)=>{
     res.status(200)
     res.type('text/html')
-    res.sendFile(path.join(__dirname,"../templates/product1.html"))
+    const myparam=req.params.id
+    res.sendFile(path.join(__dirname,`../templates/product${myparam}.html`))
 })
 
 router.get("/product2",(req,res)=>{
