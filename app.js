@@ -1,14 +1,15 @@
 const http=require ('http')
+const fs=require('fs')
+const indexPage=fs.readFileSync(`${__dirname}/webpages/index.html`)
+const productPage=fs.readFileSync(`${__dirname}/webpages/product.html`)
 const server=http.createServer((req,res)=>{
     const parthName=req.url
     console.log("url : "+parthName)
     if(parthName=="/" || parthName=="/home"){
-        const myPage=`<h1 style="color: blue;">Hello Home Page phanna22</h1>`
-        res.end(myPage)
+        res.end(indexPage)
     }
     if( parthName=="/product"){
-        const myPage=`<h1 style="color: blue;">Hello Product</h1>`
-        res.end(myPage)
+        res.end(productPage)
     }
     else{
         res.writeHead(404)
